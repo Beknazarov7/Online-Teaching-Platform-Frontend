@@ -11,9 +11,9 @@
 import axios from 'axios'
 
 const api = axios.create({
-  // The vite dev server proxies /api -> http://localhost:8000/api,
-  // so this works in dev without any CORS gymnastics.
-  baseURL: '/api',
+  // In dev, Vite proxies /api -> localhost:8000.
+  // In production (Vercel), VITE_API_URL points to the Fly.io backend.
+  baseURL: import.meta.env.VITE_API_URL ? `${import.meta.env.VITE_API_URL}/api` : '/api',
   headers: { 'Content-Type': 'application/json' },
 })
 
@@ -66,7 +66,10 @@ api.interceptors.response.use(
     try {
       // Single in-flight refresh promise — if 5 requests fire at once and
       // all 401, only one /refresh/ call goes out.
-      refreshPromise ??= axios.post('/api/auth/refresh/', {
+      const refreshURL = import.meta.env.VITE_API_URL
+        ? `${import.meta.env.VITE_API_URL}/api/auth/refresh/`
+        : '/api/auth/refresh/'
+      refreshPromise ??= axios.post(refreshURL, {
         refresh: tokens.refresh,
       }).then((r) => {
         tokens.set(r.data.access)  // refresh stays the same
