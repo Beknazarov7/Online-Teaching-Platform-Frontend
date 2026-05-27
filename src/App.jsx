@@ -8,7 +8,6 @@ import ProtectedRoute, { effectiveRole } from './auth/ProtectedRoute'
 import Layout from './components/Layout'
 import Login from './pages/Login'
 import Register from './pages/Register'
-import Placeholder from './pages/Placeholder'
 import StudentDashboard from './pages/student/Dashboard'
 import StudentCalendar from './pages/student/Calendar'
 import StudentLessons from './pages/student/Lessons'
@@ -21,6 +20,8 @@ import TeacherProfile from './pages/teacher/Profile'
 import AdminDashboard from './pages/admin/Dashboard'
 import AdminManagement from './pages/admin/Management'
 import AdminSchedule from './pages/admin/Schedule'
+import AdminProgress from './pages/admin/Progress'
+import AdminSettings from './pages/admin/Settings'
 
 export default function App() {
   return (
@@ -54,8 +55,8 @@ export default function App() {
             <Route path="/admin/dashboard"   element={<ProtectedRoute role="admin"><AdminDashboard /></ProtectedRoute>} />
             <Route path="/admin/schedule"    element={<ProtectedRoute role="admin"><AdminSchedule /></ProtectedRoute>} />
             <Route path="/admin/management"  element={<ProtectedRoute role="admin"><AdminManagement /></ProtectedRoute>} />
-            <Route path="/admin/progress"    element={<ProtectedRoute role="admin"><Placeholder title="Progress" /></ProtectedRoute>} />
-            <Route path="/admin/settings"    element={<ProtectedRoute role="admin"><Placeholder title="Settings" /></ProtectedRoute>} />
+            <Route path="/admin/progress"    element={<ProtectedRoute role="admin"><AdminProgress /></ProtectedRoute>} />
+            <Route path="/admin/settings"    element={<ProtectedRoute role="admin"><AdminSettings /></ProtectedRoute>} />
           </Route>
 
           {/* Default route — send the user wherever their role belongs. */}

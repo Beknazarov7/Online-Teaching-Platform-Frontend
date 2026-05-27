@@ -9,3 +9,4 @@ export const updateUser     = (id, payload)       => api.patch(`/admin/users/${i
 export const deleteUser     = (id)                => api.delete(`/admin/users/${id}/`)
 
 export const listLessons    = (params = {})       => api.get('/admin/lessons/', { params }).then(r => r.data)
+export const fetchProgress  = ()                  => api.get('/admin/progress/').then(r => r.data)

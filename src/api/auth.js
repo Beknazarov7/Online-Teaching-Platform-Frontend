@@ -17,6 +17,16 @@ export async function fetchMe() {
   return data
 }
 
+export async function updateMe(payload) {
+  const { data } = await api.patch('/users/me/', payload)
+  return data
+}
+
+export async function changePassword({ current_password, new_password }) {
+  const { data } = await api.post('/users/me/change-password/', { current_password, new_password })
+  return data
+}
+
 export function logout() {
   tokens.clear()
 }
