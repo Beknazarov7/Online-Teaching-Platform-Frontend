@@ -19,6 +19,7 @@ import TeacherRequests from './pages/teacher/Requests'
 import TeacherLessons from './pages/teacher/Lessons'
 import TeacherProfile from './pages/teacher/Profile'
 import AdminDashboard from './pages/admin/Dashboard'
+import AdminManagement from './pages/admin/Management'
 
 export default function App() {
   return (
@@ -51,7 +52,7 @@ export default function App() {
             {/* Admin */}
             <Route path="/admin/dashboard"   element={<ProtectedRoute role="admin"><AdminDashboard /></ProtectedRoute>} />
             <Route path="/admin/schedule"    element={<ProtectedRoute role="admin"><Placeholder title="Schedule" /></ProtectedRoute>} />
-            <Route path="/admin/management"  element={<ProtectedRoute role="admin"><Placeholder title="Management" /></ProtectedRoute>} />
+            <Route path="/admin/management"  element={<ProtectedRoute role="admin"><AdminManagement /></ProtectedRoute>} />
             <Route path="/admin/progress"    element={<ProtectedRoute role="admin"><Placeholder title="Progress" /></ProtectedRoute>} />
             <Route path="/admin/settings"    element={<ProtectedRoute role="admin"><Placeholder title="Settings" /></ProtectedRoute>} />
           </Route>
